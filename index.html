@@ -69,18 +69,24 @@
         }
 
         .brand-logo {
-            width: 34px;
-            height: 34px;
-            border-radius: 14px;
-            background: radial-gradient(circle at 20% 20%, #ffb199, #ff6f61);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
             box-shadow: 0 0 24px rgba(255, 111, 97, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-            color: #050814;
+            background: #000;
         }
+
+            .brand-logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
 
         .brand-text h1 {
             font-size: 18px;
@@ -401,6 +407,14 @@
             color: var(--accent);
         }
 
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
         .carousel-caption-tag {
             position: absolute;
             left: 14px;
@@ -606,7 +620,9 @@
         <!-- Header -->
         <header>
             <div class="brand">
-                <div class="brand-logo">EM</div>
+                <div class="brand-logo">
+                    <img src="erin-headshot.jpg" alt="Portrait of Erin Mittmann" />
+                </div>
                 <div class="brand-text">
                     <h1>Erin Mittmann</h1>
                     <span>XR Developer &bull; VR Engineer &bull; New Tech Teacher</span>
@@ -621,19 +637,18 @@
             </nav>
         </header>
 
-        <!-- Projects moved up -->
+        <!-- Projects (near top) -->
         <section id="projects" aria-label="Projects">
             <div class="section-header">
                 <span>Projects Portfolio</span>
             </div>
             <p class="section-subtitle">
                 A selection of XR projects and experiences I’ve built or contributed to.
-                Images below are stand-in visuals to represent the type of work.
             </p>
 
             <div class="card">
                 <div class="carousel-wrapper" aria-live="polite">
-                    <!-- Slide 1 -->
+                    <!-- Slide 1: Kia / Georgia Tech MATRIX -->
                     <div class="carousel-slide active">
                         <div class="carousel-image">
                             <div class="placeholder-scene">
@@ -641,7 +656,7 @@
                             </div>
                             <div class="carousel-caption-tag">
                                 <i class="fa-solid fa-car"></i>
-                                Kia Assembly Training – Stand-in Image
+                                Kia Assembly Training – Quest 3
                             </div>
                         </div>
                         <div class="carousel-text">
@@ -657,24 +672,55 @@
                                 <span class="project-tag">Unity</span>
                                 <span class="project-tag">Training Simulation</span>
                                 <span class="project-tag">Data Logging</span>
-                                <span class="project-tag">UX for Manufacturing</span>
                             </div>
                             <span class="project-link">
                                 <i class="fa-regular fa-circle-play"></i>
-                                Internal research deployment with Kia &amp; Georgia Tech
+                                Research deployment with Kia &amp; Georgia Tech MATRIX
                             </span>
                         </div>
                     </div>
 
-                    <!-- Slide 2 -->
+                    <!-- Slide 2: Street Smarts VR -->
                     <div class="carousel-slide">
                         <div class="carousel-image">
-                            <div class="placeholder-scene">
-                                <i class="fa-solid fa-heart-pulse placeholder-icon"></i>
-                            </div>
+                            <img src="street-smarts-vr.png"
+                                 alt="Street Smarts VR training scenario at a doorway"
+                                 class="slide-img" />
                             <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-shield-halved"></i>
-                                SecureMR Health Utility – Stand-in Image
+                                <i class="fa-solid fa-shield"></i>
+                                Street Smarts VR – Scenario Design
+                            </div>
+                        </div>
+                        <div class="carousel-text">
+                            <h3 class="project-title">Scenario-based VR Training</h3>
+                            <p class="project-meta">Street Smarts VR &bull; Software Engineer</p>
+                            <p class="project-desc">
+                                Built and customized immersive training scenarios for organizations using Unity and
+                                HTC Vive Pro 2 with custom controllers and Photon multiuser networking. Designed
+                                branching interactions, performance feedback, and hand-tracked quiz flows.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTC Vive Pro 2</span>
+                                <span class="project-tag">Multiuser (Photon)</span>
+                                <span class="project-tag">Training Design</span>
+                                <span class="project-tag">Hand Tracking</span>
+                            </div>
+                            <span class="project-link">
+                                <i class="fa-solid fa-user-shield"></i>
+                                Real-world training content for professional users
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Glucose MR -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <img src="glucose-mr.gif"
+                                 alt="Mixed reality view with diabetes type selection UI"
+                                 class="slide-img" />
+                            <div class="carousel-caption-tag">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                Glucose MR – Hackathon Concept
                             </div>
                         </div>
                         <div class="carousel-text">
@@ -694,12 +740,12 @@
                             </div>
                             <span class="project-link">
                                 <i class="fa-solid fa-award"></i>
-                                Awarded Best Use of SecureMR, ByteDance track
+                                Awarded Best Use of SecureMR (ByteDance track)
                             </span>
                         </div>
                     </div>
 
-                    <!-- Slide 3 -->
+                    <!-- Slide 4: Commencement AR (Northeastern CAMD) -->
                     <div class="carousel-slide">
                         <div class="carousel-image">
                             <div class="placeholder-scene">
@@ -707,16 +753,16 @@
                             </div>
                             <div class="carousel-caption-tag">
                                 <i class="fa-solid fa-users"></i>
-                                5,000 Grads AR Experience – Stand-in Image
+                                5,000 Grads AR Experience
                             </div>
                         </div>
                         <div class="carousel-text">
                             <h3 class="project-title">Commencement AR Experience</h3>
                             <p class="project-meta">Northeastern CAMD New Technologies Lab</p>
                             <p class="project-desc">
-                                A large-scale mobile AR experience designed for 5,000 graduates. I helped lead
-                                development of interactive visuals that layered digital moments of celebration over
-                                the physical ceremony, accessible from Apple and Android devices.
+                                A mobile AR experience designed for 5,000 graduates. Helped lead development of
+                                interactive visuals that layered digital celebration moments over the physical
+                                ceremony, accessible on Apple and Android devices.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Mobile AR</span>
@@ -725,12 +771,12 @@
                             </div>
                             <span class="project-link">
                                 <i class="fa-regular fa-lightbulb"></i>
-                                Concept + implementation with the New Technologies Lab team
+                                Built with the New Technologies Lab team
                             </span>
                         </div>
                     </div>
 
-                    <!-- Slide 4 -->
+                    <!-- Slide 5: XR Creation / Fusion & CAMD -->
                     <div class="carousel-slide">
                         <div class="carousel-image">
                             <div class="placeholder-scene">
@@ -738,16 +784,16 @@
                             </div>
                             <div class="carousel-caption-tag">
                                 <i class="fa-solid fa-school"></i>
-                                Student XR Lab – Stand-in Image
+                                XR Creation for Students
                             </div>
                         </div>
                         <div class="carousel-text">
                             <h3 class="project-title">XR Creation Without Code</h3>
                             <p class="project-meta">Northeastern CAMD Lab &amp; Fusion Academy</p>
                             <p class="project-desc">
-                                Tools and curriculum that let students build interactive VR videos and XR experiences
-                                without needing to code. I created Unity tools, led workshops on Oculus/HTC/Apple/Android,
-                                and now teach Unity, C#, robotics, and animation to students at Fusion Academy.
+                                Developed Unity tools and curricula that let students build interactive VR videos
+                                and XR experiences without needing to code. Taught Unity, C#, Python, robotics,
+                                CAD, and animation, guiding learners from first prototype to polished projects.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Education</span>
@@ -757,7 +803,100 @@
                             </div>
                             <span class="project-link">
                                 <i class="fa-solid fa-chalkboard-user"></i>
-                                Built for XR classrooms and student labs
+                                Designed for XR classrooms and labs
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: DISTTMR Research -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <div class="placeholder-scene">
+                                <i class="fa-solid fa-helmet-safety placeholder-icon"></i>
+                            </div>
+                            <div class="carousel-caption-tag">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                Hololens AR Cold Spray Tutorials
+                            </div>
+                        </div>
+                        <div class="carousel-text">
+                            <h3 class="project-title">Industrial AR Tutorials for Cold Spray</h3>
+                            <p class="project-meta">DISTTMR Research &bull; AR Developer</p>
+                            <p class="project-desc">
+                                Collaborated with NAVY partners to create HoloLens AR tutorials that guide users
+                                through Cold Spray repair workflows. Designed multimodal UI to surface video,
+                                3D models, and step-by-step instructions in context.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HoloLens</span>
+                                <span class="project-tag">Industrial AR</span>
+                                <span class="project-tag">UI for Procedures</span>
+                            </div>
+                            <span class="project-link">
+                                <i class="fa-solid fa-anchor"></i>
+                                Built in partnership with NAVY collaborators
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7: Vicarious Surgical -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <div class="placeholder-scene">
+                                <i class="fa-solid fa-microscope placeholder-icon"></i>
+                            </div>
+                            <div class="carousel-caption-tag">
+                                <i class="fa-solid fa-stethoscope"></i>
+                                Surgical VR Visualization
+                            </div>
+                        </div>
+                        <div class="carousel-text">
+                            <h3 class="project-title">High-Precision Surgical VR</h3>
+                            <p class="project-meta">Vicarious Surgical &bull; VR Developer Intern</p>
+                            <p class="project-desc">
+                                Prototyped VR features for high-precision surgical experiences. Created custom
+                                shaders for camera feeds in VR and worked on testing and debugging to reduce
+                                latency between cameras and headsets for a more responsive experience.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Medical VR</span>
+                                <span class="project-tag">Custom Shaders</span>
+                                <span class="project-tag">Low-latency Pipelines</span>
+                            </div>
+                            <span class="project-link">
+                                <i class="fa-solid fa-hospital"></i>
+                                Experimental tools for surgical robotics workflows
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8: CBH Navigate Project -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <div class="placeholder-scene">
+                                <i class="fa-solid fa-person-running placeholder-icon"></i>
+                            </div>
+                            <div class="carousel-caption-tag">
+                                <i class="fa-solid fa-brain"></i>
+                                Exercise &amp; Cognition VR Island
+                            </div>
+                        </div>
+                        <div class="carousel-text">
+                            <h3 class="project-title">Navigate Project – VR Island</h3>
+                            <p class="project-meta">CBH Lab Navigate Project &bull; VR Developer</p>
+                            <p class="project-desc">
+                                Built a VR island environment using HTC hardware and a walking pod to study how
+                                exercise impacts cognition. Designed custom terrain, optimized performance, and
+                                trained new hires on building complex research-ready VR systems.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTC VR</span>
+                                <span class="project-tag">Research</span>
+                                <span class="project-tag">Locomotion</span>
+                            </div>
+                            <span class="project-link">
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                Used in cognitive and exercise research studies
                             </span>
                         </div>
                     </div>
@@ -777,28 +916,33 @@
                             <div class="carousel-dot" data-index="1"></div>
                             <div class="carousel-dot" data-index="2"></div>
                             <div class="carousel-dot" data-index="3"></div>
+                            <div class="carousel-dot" data-index="4"></div>
+                            <div class="carousel-dot" data-index="5"></div>
+                            <div class="carousel-dot" data-index="6"></div>
+                            <div class="carousel-dot" data-index="7"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Hero (now below projects, but still near top) -->
+        <!-- Hero / Mission -->
         <section class="hero" aria-label="Intro">
             <div class="hero-main">
                 <div class="hero-kicker">Hello, I’m Erin</div>
                 <div class="hero-name">I build immersive experiences that teach, train, and inspire.</div>
                 <p class="hero-sub">
-                    XR developer and educator with experience across research labs, startups, and industry partners
-                    like Kia, ByteDance / SecureMR, and the NAVY.
+                    XR developer and educator with experience across research labs, startups, and industry
+                    partners like Kia, ByteDance / SecureMR, and the NAVY.
                 </p>
 
                 <div class="mission-box" id="mission">
                     <div class="mission-label">Mission</div>
                     <p class="mission-text">
                         My mission is to make emerging technologies feel intuitive, empowering, and human.
-                        I design and build XR experiences that turn complex systems into playful, learnable worlds —
-                        whether that’s car assembly training, medical simulations, or creative tools for students.
+                        I design and build XR experiences that turn complex systems into playful, learnable
+                        worlds — whether that’s car assembly training, medical simulations, or creative tools
+                        for students.
                     </p>
                 </div>
 
@@ -822,9 +966,9 @@
                         <i class="fa-regular fa-paper-plane"></i>
                         Contact Me
                     </a>
-                    <a href="mailto:erinmittma@gmail.com" class="btn-ghost">
-                        <i class="fa-regular fa-envelope"></i>
-                        Email: erinmittma@gmail.com
+                    <a href="#projects" class="btn-ghost">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                        View Projects
                     </a>
                 </div>
             </div>
@@ -834,8 +978,8 @@
                     <div class="stat-label">Snapshot</div>
                     <div class="stat-value">XR Across Labs, Startups &amp; Industry</div>
                     <div class="stat-desc">
-                        From car assembly training with Kia and Georgia Tech MATRIX, to NAVY Hololens tutorials,
-                        to VR research at Northeastern and Vicarious Surgical.
+                        From car assembly training with Kia and Georgia Tech MATRIX, to Hololens tutorials
+                        with NAVY collaborators, to VR research at Northeastern and Vicarious Surgical.
                     </div>
                     <div class="pill-row">
                         <div class="pill"><i class="fa-solid fa-vr-cardboard"></i>Quest, Vive, Vision Pro</div>
@@ -863,13 +1007,14 @@
             </div>
             <p class="section-subtitle">
                 Interested in collaborating on an XR project, research, or a learning experience?
-                Reach out below.
+                Share a bit about it below.
             </p>
 
             <div class="card">
                 <div class="contact-grid">
                     <div>
-                        <form action="mailto:erinmittma@gmail.com" method="post" enctype="text/plain">
+                        <!-- No direct email or phone; you can wire this form to a backend later -->
+                        <form action="#" method="post">
                             <div class="row">
                                 <div class="field">
                                     <label for="name">Name</label>
@@ -903,26 +1048,21 @@
 
                     <div>
                         <div class="contact-meta-item">
-                            <i class="fa-regular fa-envelope"></i>
-                            <span>
-                                Email:
-                                <a href="mailto:erinmittma@gmail.com">erinmittma@gmail.com</a>
-                            </span>
-                        </div>
-                        <div class="contact-meta-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>Phone: 650-384-3739</span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Based in the U.S. & open to remote and hybrid XR roles.</span>
                         </div>
                         <div class="divider"></div>
-                        <div class="contact-meta-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>Based in the U.S. & open to remote / hybrid XR roles</span>
-                        </div>
                         <div class="contact-meta-item">
                             <i class="fa-solid fa-heart"></i>
                             <span>
                                 Outside of work: 3,000+ hours of volunteering, trapeze, lifting, biking,
                                 swimming, robotics, and board games.
+                            </span>
+                        </div>
+                        <div class="contact-meta-item">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                            <span>
+                                I especially enjoy projects that blend education, health, and immersive tech.
                             </span>
                         </div>
                     </div>
