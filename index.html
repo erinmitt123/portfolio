@@ -358,6 +358,25 @@
             border-radius: 16px;
             background: #050814;
         }
+        /* Pin the projects line to the top when scrolling */
+        #projects .section-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient( to bottom, rgba(5, 8, 20, 0.98), rgba(5, 8, 20, 0.85), transparent );
+            padding: 8px 0 10px; /* gives it a bit of vertical breathing room */
+        }
+
+
+        /* Hide the text just for the Projects section */
+        #projects .section-header span {
+            display: none;
+        }
+
+        /* Make the projects line stretch across the page */
+        #projects .section-header::before {
+            width: 100%;
+        }
 
         .carousel-slide {
             display: none;
