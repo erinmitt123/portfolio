@@ -1,1137 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Erin Mittmann | XR Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Icons -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
-    <style>
-        :root {
-            --bg: #050814;
-            --bg-alt: #0b1020;
-            --card: #11172a;
-            --accent: #ff6f61;
-            --accent-soft: rgba(255, 111, 97, 0.16);
-            --text: #f7f7ff;
-            --muted: #a4a8c3;
-            --border: #1d2340;
-            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            --radius-lg: 18px;
-            --radius-sm: 999px;
-            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background: radial-gradient(circle at top, #1b2345 0, #050814 55%);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        .page {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 20px 20px 64px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 10px 0 16px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 24px rgba(255, 111, 97, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-        }
-
-            .brand-logo img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-
-        .brand-text h1 {
-            font-size: 18px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .brand-text span {
-            font-size: 11px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-        }
-
-        nav {
-            font-size: 13px;
-        }
-
-            nav ul {
-                display: flex;
-                gap: 16px;
-                list-style: none;
-            }
-
-            nav a {
-                color: var(--muted);
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 0.14em;
-                font-size: 11px;
-            }
-
-                nav a:hover {
-                    color: var(--accent);
-                }
-
-        @media (max-width: 780px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                padding-left: 2px;
-            }
-        }
-
-        /* Hero */
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
-            gap: 26px;
-            margin-top: 24px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        .hero-main {
-            background: radial-gradient(circle at top left, #1b2243 0, #11172a 55%);
-            border-radius: var(--radius-lg);
-            padding: 22px 22px 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .hero-kicker {
-            font-size: 12px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            margin-bottom: 6px;
-        }
-
-        .hero-name {
-            font-size: clamp(26px, 4vw, 32px);
-            font-weight: 700;
-        }
-
-        .hero-sub {
-            font-size: 14px;
-            color: var(--muted);
-            margin-top: 4px;
-            margin-bottom: 14px;
-        }
-
-        .mission-box {
-            background: rgba(5, 8, 20, 0.9);
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            padding: 12px 14px;
-            margin-top: 6px;
-        }
-
-        .mission-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--muted);
-            margin-bottom: 4px;
-        }
-
-        .mission-text {
-            font-size: 13px;
-            color: #e2e4ff;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-            font-size: 12px;
-            color: var(--muted);
-        }
-
-        .hero-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(5, 8, 20, 0.8);
-        }
-
-        .hero-contact {
-            margin-top: 14px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .btn-primary,
-        .btn-ghost {
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            padding: 10px 16px;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #050814;
-            font-weight: 600;
-            box-shadow: 0 12px 26px rgba(255, 111, 97, 0.35);
-        }
-
-            .btn-primary:hover {
-                filter: brightness(1.05);
-            }
-
-        .btn-ghost {
-            background: rgba(5, 8, 20, 0.9);
-            color: var(--muted);
-        }
-
-        .hero-aside {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .stat-card {
-            flex: 1;
-            background: var(--card);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            padding: 14px 14px 16px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .stat-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--muted);
-        }
-
-        .stat-value {
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .stat-desc {
-            font-size: 12px;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 6px;
-        }
-
-        .pill {
-            font-size: 11px;
-            padding: 4px 9px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background: rgba(5, 8, 25, 0.9);
-            color: var(--muted);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-            .pill i {
-                font-size: 12px;
-            }
-
-        /* Sections */
-        section {
-            margin-bottom: 40px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-
-            .section-header span {
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 0.16em;
-                color: var(--muted);
-            }
-
-            .section-header::before {
-                content: "";
-                width: 40px;
-                height: 1px;
-                background: linear-gradient(90deg, var(--accent), transparent);
-                border-radius: 999px;
-            }
-
-        .section-subtitle {
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 10px;
-        }
-
-        .card {
-            background: var(--card);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            padding: 18px 18px 20px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        /* Projects Carousel */
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            background: #050814;
-        }
-        /* Pin the projects line to the top when scrolling */
-        #projects .section-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: linear-gradient( to bottom, rgba(5, 8, 20, 0.98), rgba(5, 8, 20, 0.85), transparent );
-            padding: 8px 0 10px; /* gives it a bit of vertical breathing room */
-        }
-
-
-        /* Hide the text just for the Projects section */
-        #projects .section-header span {
-            display: none;
-        }
-
-        /* Make the projects line stretch across the page */
-        #projects .section-header::before {
-            width: 100%;
-        }
-
-        .carousel-slide {
-            display: none;
-            padding: 16px;
-            gap: 16px;
-            align-items: stretch;
-        }
-
-            .carousel-slide.active {
-                display: grid;
-                grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
-            }
-
-        @media (max-width: 800px) {
-            .carousel-slide.active {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        .carousel-image {
-            border-radius: 14px;
-            background: linear-gradient(135deg, #2a2e4f, #11172a);
-            border: 1px solid var(--border);
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            position: relative;
-            overflow: hidden;
-            min-height: 190px;
-        }
-
-        .carousel-image img {
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .placeholder-scene {
-            width: 80%;
-            height: 60%;
-            border-radius: 18px;
-            border: 1px solid #3b436a;
-            background: repeating-linear-gradient( -45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 4px, transparent 4px, transparent 8px );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .placeholder-icon {
-            font-size: 34px;
-            color: var(--accent);
-        }
-
-        .slide-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-            display: block;
-        }
-
-        .carousel-caption-tag {
-            position: absolute;
-            left: 14px;
-            bottom: 14px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(5, 8, 20, 0.92);
-            color: var(--muted);
-            font-size: 11px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .carousel-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .project-meta {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 8px;
-        }
-
-        .project-desc {
-            font-size: 13px;
-            color: #e2e4ff;
-            margin-bottom: 8px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .project-tag {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(5, 8, 25, 0.9);
-            color: var(--muted);
-        }
-
-        .project-link {
-            font-size: 12px;
-            color: var(--accent);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 4px;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 2px 0;
-            margin-top: 6px;
-        }
-
-        .carousel-buttons {
-            display: flex;
-            gap: 6px;
-        }
-
-        .carousel-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(5, 8, 25, 0.9);
-            color: var(--muted);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-            .carousel-btn:hover {
-                color: var(--accent);
-            }
-
-        .carousel-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #20274a;
-            cursor: pointer;
-        }
-
-            .carousel-dot.active {
-                background: var(--accent);
-                box-shadow: 0 0 10px rgba(255, 111, 97, 0.7);
-            }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 18px;
-        }
-
-        @media (max-width: 860px) {
-            .contact-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        .contact-meta-item {
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        form label {
-            display: block;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--muted);
-            margin-bottom: 4px;
-        }
-
-        form input,
-        form textarea {
-            width: 100%;
-            background: #050814;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            padding: 8px 10px;
-            color: var(--text);
-            font-family: var(--font-main);
-            font-size: 13px;
-            outline: none;
-        }
-
-            form input:focus,
-            form textarea:focus {
-                border-color: var(--accent);
-                box-shadow: 0 0 0 1px rgba(255, 111, 97, 0.5);
-            }
-
-        form textarea {
-            resize: vertical;
-            min-height: 110px;
-        }
-
-        form .row {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-        }
-
-        @media (max-width: 640px) {
-            form .row {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        form .field {
-            margin-bottom: 12px;
-        }
-
-        footer {
-            margin-top: 34px;
-            text-align: center;
-            font-size: 11px;
-            color: var(--muted);
-            opacity: 0.7;
-        }
-
-        .divider {
-            height: 1px;
-            margin: 28px 0 16px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.5;
-        }
-        .projects-title {
-            margin: 0 0 12px;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.22em;
-            color: var(--muted);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Erin Mittmann | XR Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root{
+      --bg:#050814; --card:#11172a; --accent:#ff6f61; --accent-soft:rgba(255,111,97,.16);
+      --text:#f7f7ff; --muted:#a4a8c3; --border:#1d2340;
+      --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --r-lg:18px; --r-sm:999px; --shadow:0 18px 40px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:radial-gradient(circle at top,#1b2345 0,#050814 55%);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .page{max-width:1080px;margin:0 auto;padding:20px 20px 64px}
+    header{position:sticky;top:0;z-index:200;background:rgba(5,8,20,.88);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border); padding:10px 0 12px; margin:0 0 18px}
+    .header-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-logo{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);
+      box-shadow:0 0 24px rgba(255,111,97,.7);background:#000;flex:0 0 auto}
+    .brand-logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand-text h1{font-size:18px;letter-spacing:.12em;text-transform:uppercase}
+    .brand-text span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em}
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+    nav a:hover{color:var(--accent);text-decoration:none}
+    @media (max-width:780px){
+      .header-inner{flex-direction:column;align-items:flex-start}
+    }
+
+    section{margin-bottom:40px}
+    .section-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+    .section-header::before{content:"";width:100%;height:2px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:999px}
+    .section-sub{font-size:13px;color:var(--muted);margin:8px 0 12px}
+    .card{background:var(--card);border-radius:var(--r-lg);border:1px solid var(--border);padding:18px;box-shadow:var(--shadow)}
+    .btn{border-radius:999px;font-size:13px;padding:10px 16px;border:1px solid var(--border);
+      display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#050814;font-weight:600;box-shadow:0 12px 26px rgba(255,111,97,.35)}
+    .btn.ghost{background:rgba(5,8,20,.9);color:var(--muted)}
+    .btn:hover{text-decoration:none;filter:brightness(1.03)}
+
+    .hero{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2.2fr);gap:22px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .hero-main{background:radial-gradient(circle at top left,#1b2243 0,#11172a 55%);border-radius:var(--r-lg);
+      border:1px solid var(--border);padding:22px;box-shadow:var(--shadow)}
+    .kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-bottom:6px}
+    .headline{font-size:clamp(26px,4vw,32px);font-weight:700}
+    .sub{font-size:14px;color:var(--muted);margin-top:6px}
+    .mission{margin-top:14px;background:rgba(5,8,20,.9);border:1px solid var(--border);border-radius:14px;padding:12px 14px}
+    .mission .label{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:4px}
+    .mission p{font-size:13px;color:#e2e4ff}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .meta .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+      border:1px solid var(--border);background:rgba(5,8,20,.8);font-size:12px;color:var(--muted)}
+    .hero-aside .card{padding:14px}
+
+    .carousel-wrapper{position:relative;overflow:hidden;border-radius:16px;background:#050814}
+    .carousel-slide{display:none;padding:16px;gap:14px;align-items:stretch}
+    .carousel-slide.active{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,2fr)}
+    @media (max-width:800px){.carousel-slide.active{grid-template-columns:1fr}}
+    .c-img{border-radius:14px;border:1px solid var(--border);overflow:hidden;min-height:190px;
+      background:linear-gradient(135deg,#2a2e4f,#11172a);display:flex;align-items:center;justify-content:center;position:relative}
+    .c-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .c-img .ph{width:80%;height:60%;border-radius:18px;border:1px solid #3b436a;
+      background:repeating-linear-gradient(-45deg,rgba(255,255,255,.05),rgba(255,255,255,.05) 4px,transparent 4px,transparent 8px);
+      display:flex;align-items:center;justify-content:center;box-shadow:0 16px 30px rgba(0,0,0,.6)}
+    .c-img .ph i{font-size:34px;color:var(--accent)}
+    .c-tag{position:absolute;left:14px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(5,8,20,.92);
+      color:var(--muted);font-size:11px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border)}
+    .c-text{display:flex;flex-direction:column;justify-content:center}
+    .c-title{font-size:16px;font-weight:600;margin-bottom:4px}
+    .c-one{font-size:13px;color:#e2e4ff;margin-bottom:10px}
+    .c-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+    .controls{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 0;margin-top:6px}
+    .cbtn{width:30px;height:30px;border-radius:999px;border:1px solid var(--border);background:rgba(5,8,25,.9);
+      color:var(--muted);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+    .cbtn:hover{color:var(--accent)}
+    .dots{display:flex;gap:6px}
+    .dot{width:8px;height:8px;border-radius:999px;background:#20274a;cursor:pointer}
+    .dot.active{background:var(--accent);box-shadow:0 0 10px rgba(255,111,97,.7)}
+
+    .contact-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
+    @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+    label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:4px}
+    input,textarea{width:100%;background:#050814;border-radius:10px;border:1px solid var(--border);
+      padding:8px 10px;color:var(--text);font-family:var(--font);font-size:13px;outline:none}
+    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 1px rgba(255,111,97,.5)}
+    textarea{min-height:110px;resize:vertical}
+    .row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
+    .field{margin-bottom:12px}
+    .note{font-size:12px;color:var(--muted)}
+    footer{margin-top:34px;text-align:center;font-size:11px;color:var(--muted);opacity:.7}
+  </style>
 </head>
 <body>
-    <div class="page">
-        <!-- Header -->
-        <header>
-            <div class="brand">
-                <div class="brand-logo">
-                    <img src="1638899720351.jpg" alt="Portrait of Erin Mittmann" />
-                </div>
-                <div class="brand-text">
-                    <h1>Erin Mittmann</h1>
-                    <span>XR Developer &bull; Immersive UI/UX Designer & Engineer </span>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+  <div class="page">
 
-        <!-- Projects (near top) -->
-        <section id="projects" aria-label="Projects">
-            <div class="section-header">
-                <span>Projects Portfolio</span>
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="erin-headshot.jpg" alt="Portrait of Erin Mittmann" />
+          </div>
+          <div class="brand-text">
+            <h1>Erin Mittmann</h1>
+            <span>XR Developer &bull; VR Engineer &bull; New Tech Teacher</span>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="projects" aria-label="Projects">
+      <div class="section-header"></div>
+      <p class="section-sub">Featured work — tap a project to view full details.</p>
+
+      <div class="card">
+        <div class="carousel-wrapper" aria-live="polite">
+          <div class="carousel-slide active">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-industry"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-car"></i> Kia Training (Quest 3)</div>
             </div>
-            <p class="section-subtitle">
-                I aim to build immersive experiences that teach, train, and inspire. I have experience working in research labs, startups, and industry partners like Georgia Tech, Kia and ByteDance.
+            <div class="c-text">
+              <div class="c-title">Kia Assembly Line Training</div>
+              <div class="c-one">Interactive Quest 3 simulation with hand tracking + performance analytics.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#kia"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <img src="street-smarts-vr.png" alt="Street Smarts VR scenario" />
+              <div class="c-tag"><i class="fa-solid fa-shield"></i> Street Smarts VR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Scenario-based VR Training</div>
+              <div class="c-one">Multiuser training scenarios with custom controllers and hand-tracked interactions.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#street-smarts"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <img src="glucose-mr.gif" alt="Glucose MR interface" />
+              <div class="c-tag"><i class="fa-solid fa-heart-pulse"></i> Glucose MR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Glucose MR</div>
+              <div class="c-one">Privacy-preserving mixed reality food guidance using SecureMR + object recognition.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#glucose-mr"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-users"></i> Commencement AR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Commencement AR Experience</div>
+              <div class="c-one">Mobile AR celebration experience built for a 5,000-person graduation.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#commencement-ar"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-person-chalkboard"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-school"></i> XR Education</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">XR Tools & Teaching</div>
+              <div class="c-one">Unity tools + curriculum helping students build XR projects with confidence.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#xr-education"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-helmet-safety"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-screwdriver-wrench"></i> HoloLens AR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Industrial AR Tutorials (Cold Spray)</div>
+              <div class="c-one">Procedure-guided AR tutorials for repair workflows with NAVY collaborators.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#disttmr"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-microscope"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-stethoscope"></i> Surgical VR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Surgical VR Visualization</div>
+              <div class="c-one">VR camera visualization + latency testing for surgical robotics workflows.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#vicarious"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="c-img">
+              <div class="ph"><i class="fa-solid fa-person-running"></i></div>
+              <div class="c-tag"><i class="fa-solid fa-brain"></i> Navigate VR</div>
+            </div>
+            <div class="c-text">
+              <div class="c-title">Navigate Project – VR Island</div>
+              <div class="c-one">Research VR environment exploring exercise, locomotion, and cognition.</div>
+              <div class="c-actions">
+                <a class="btn primary" href="projects.html#navigate"><i class="fa-solid fa-arrow-right"></i> View details</a>
+                <a class="btn ghost" href="projects.html"><i class="fa-regular fa-folder-open"></i> All projects</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div>
+              <button class="cbtn" type="button" aria-label="Previous project" id="prevBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="cbtn" type="button" aria-label="Next project" id="nextBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="dots" aria-label="Project navigation">
+              <div class="dot active" data-index="0"></div>
+              <div class="dot" data-index="1"></div>
+              <div class="dot" data-index="2"></div>
+              <div class="dot" data-index="3"></div>
+              <div class="dot" data-index="4"></div>
+              <div class="dot" data-index="5"></div>
+              <div class="dot" data-index="6"></div>
+              <div class="dot" data-index="7"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Mission and intro">
+      <div class="hero">
+        <div class="hero-main" id="mission">
+          <div class="kicker">Hello, I’m Erin</div>
+          <div class="headline">Creating immersive XR experiences that make learning intuitive, engaging, and unforgettable.</div>
+          <div class="sub">
+            XR developer and educator with experience across research labs, startups, and industry
+            partners like Kia, ByteDance / SecureMR, and the NAVY.
+          </div>
+
+          <div class="mission">
+            <div class="label">Mission</div>
+            <p>
+              My mission is to make emerging technologies feel intuitive, empowering, and human.
+              I design and build XR experiences that turn complex systems into playful, learnable
+              worlds — whether that’s car assembly training, medical simulations, or creative tools
+              for students.
             </p>
+          </div>
 
-            <div class="card">
-                <h2 class="projects-title">Project Portfolio</h2>
-                <div class="carousel-wrapper" aria-live="polite">
-                    <!-- Slide 1: Kia / Georgia Tech MATRIX -->
-                    <div class="carousel-slide active">
-                        <div class="carousel-image">
-                            <img src="kia.png"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-car"></i>
-                                Kia Assembly Training
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Kia Assembly Line Training</h3>
-                            <p class="project-meta">Georgia Tech MATRIX Research &bull; VR Developer</p>
-                            <p class="project-desc">
-                                I created a VR training experience that mimics real Kia car assembly processes on Meta Quest 3.
-                                I designed interactive UI, implemented custom hand-tracking and controller inputs, and
-                                built a live data backend to track completion time and mistakes for every run.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Quest 3</span>
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag">Training Simulation</span>
-                                <span class="project-tag">Data Logging</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-regular fa-circle-play"></i>
-                                Kia Door Assembly VR Training
-                            </span>
-                        </div>
-                    </div>
+          <div class="meta">
+            <div class="pill"><i class="fa-solid fa-headset"></i> XR Developer – Unity &amp; C#</div>
+            <div class="pill"><i class="fa-solid fa-chalkboard-user"></i> New Tech Teacher</div>
+            <div class="pill"><i class="fa-solid fa-medal"></i> MIT Reality Hack Winner</div>
+          </div>
 
-                    <!-- Slide 2: Street Smarts VR -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="Asset_Request_Federal_Shot.jpg"
-                                 alt="Street Smarts VR training scenario at a doorway"
-                                 class="slide-img" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-shield"></i>
-                                Street Smarts VR – Scenario Design
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Scenario-Based VR Training</h3>
-                            <p class="project-meta">Street Smarts VR &bull; Software Engineer</p>
-                            <p class="project-desc">
-                                Built and customized immersive training scenarios using Unity and
-                                HTC Vive Cosmos with custom controllers and Photon multiuser networking. Designed
-                                branching interactions and live data recording for evaluating trainees.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTC Vive Cosmos</span>
-                                <span class="project-tag">Multiuser (Photon)</span>
-                                <span class="project-tag">Training Design</span>
-                                <span class="project-tag">Hand Tracking</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-solid fa-user-shield"></i>
-                                Real-world training content for professional users
-                            </span>
-                        </div>
-                    </div>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="projects.html"><i class="fa-regular fa-folder-open"></i> Browse all projects</a>
+            <a class="btn ghost" href="#contact"><i class="fa-regular fa-paper-plane"></i> Contact</a>
+          </div>
+        </div>
 
-                    <!-- Slide 3: Glucose MR -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="glucose.png"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-heart-pulse"></i>
-                                Glucose MR – Hackathon Winner
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Glucose MR – Food Guidance for Diabetics</h3>
-                            <p class="project-meta">Hackathon Project &bull; Best Use of SecureMR</p>
-                            <p class="project-desc">
-                                Created a mixed reality utility concept for people with diabetes. Using SecureMR camera
-                                privacy and 3D object recognition, the app identifies foods around the user,
-                                cross-references them with nutritional data, and provides visual guidance based
-                                on their current glucose levels.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Mixed Reality</span>
-                                <span class="project-tag">SecureMR</span>
-                                <span class="project-tag">Computer Vision</span>
-                                <span class="project-tag">Health Tech</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-solid fa-award"></i>
-                                Awarded Best Use of SecureMR (ByteDance track)
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4: Commencement AR (Northeastern CAMD) -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="commencement.png"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-users"></i>
-                                5,000 Grads AR Experience
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Commencement AR Experience</h3>
-                            <p class="project-meta">Northeastern CAMD New Technologies Lab</p>
-                            <p class="project-desc">
-                                Created a mobile AR experience designed for 5,000 graduates. Helped lead development of
-                                interactive visuals that layered digital celebration moments over the physical
-                                ceremony, accessible on Apple and Android devices.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Mobile AR</span>
-                                <span class="project-tag">Unity</span>
-                                <span class="project-tag">Large-scale Deployment</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-regular fa-lightbulb"></i>
-                                Led project with the New Technologies Lab team
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Slide 5: Capstone -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="Screenshot 2025-12-10 100815.png"
-                                 alt="Augmented Reality focusing on image recognition of locations" />
-
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-school"></i>
-                                XR Creation for Students
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Northeastern Capstone Project</h3>
-                            <p class="project-meta">Northeastern CAMD Lab </p>
-                            <p class="project-desc">
-                                Developed an Augmented Reality app on Hololens 2 that allowed students to explore Northeastern
-                                on a multi-level scavenger hunt. Used image recognition to identify and trigger experiences placed in 3D space
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Image Recognition</span>
-                                <span class="project-tag">Hololens 2</span>
-                                <span class="project-tag">Augmented Reality</span>
-                                <span class="project-tag">Gaming</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Designed for potential and new Northeastern students
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Slide 6: DISTTMR Research -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="coldspray.png"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-screwdriver-wrench"></i>
-                                Hololens AR Cold Spray Tutorials
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Industrial AR Tutorials for Cold Spray</h3>
-                            <p class="project-meta">DISTTMR Research &bull; AR Developer</p>
-                            <p class="project-desc">
-                                Collaborated with NAVY partners to create HoloLens AR tutorials that guide users
-                                through Cold Spray repair workflows. Designed multimodal step-by-step instructions to assist the users.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">HoloLens</span>
-                                <span class="project-tag">Industrial AR</span>
-                                <span class="project-tag">UI for Procedures</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-solid fa-anchor"></i>
-                                Built in partnership with NAVY collaborators
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Slide 7: Vicarious Surgical -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="Vicarious-Surgical-Device.jpg"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-stethoscope"></i>
-                                Surgical VR Visualization
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">High-Precision Surgical VR</h3>
-                            <p class="project-meta">Vicarious Surgical &bull; VR Developer Intern</p>
-                            <p class="project-desc">
-                                Prototyped VR features for high-precision surgical experiences. Created custom
-                                shaders for camera feeds in VR and worked on testing and debugging to reduce
-                                latency between cameras and headsets for a more responsive experience.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Medical VR</span>
-                                <span class="project-tag">Custom Shaders</span>
-                                <span class="project-tag">Low-latency Pipelines</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-solid fa-hospital"></i>
-                                Experimental tools for surgical robotics workflows
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Slide 8: CBH Navigate Project -->
-                    <div class="carousel-slide">
-                        <div class="carousel-image">
-                            <img src="Screenshot 2025-12-10 100727.png"
-                                 alt="Mixed reality view with diabetes type selection UI" />
-                            <div class="carousel-caption-tag">
-                                <i class="fa-solid fa-brain"></i>
-                                Exercise &amp; Cognition VR Island
-                            </div>
-                        </div>
-                        <div class="carousel-text">
-                            <h3 class="project-title">Navigate Project – VR Island</h3>
-                            <p class="project-meta">CBH Lab Navigate Project &bull; VR Developer</p>
-                            <p class="project-desc">
-                                Built a VR island environment using HTC hardware and a walking pod to study how
-                                exercise impacts cognition. Designed custom terrain, optimized performance, and
-                                trained new hires on building complex research-ready VR systems.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTC VR</span>
-                                <span class="project-tag">Research</span>
-                                <span class="project-tag">Locomotion</span>
-                            </div>
-                            <span class="project-link">
-                                <i class="fa-regular fa-floppy-disk"></i>
-                                Used in cognitive and exercise research studies
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Carousel controls -->
-                    <div class="carousel-controls">
-                        <div class="carousel-buttons">
-                            <button class="carousel-btn" type="button" aria-label="Previous project" id="prevBtn">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <button class="carousel-btn" type="button" aria-label="Next project" id="nextBtn">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <div class="carousel-dots" aria-label="Project navigation">
-                            <div class="carousel-dot active" data-index="0"></div>
-                            <div class="carousel-dot" data-index="1"></div>
-                            <div class="carousel-dot" data-index="2"></div>
-                            <div class="carousel-dot" data-index="3"></div>
-                            <div class="carousel-dot" data-index="4"></div>
-                            <div class="carousel-dot" data-index="5"></div>
-                            <div class="carousel-dot" data-index="6"></div>
-                            <div class="carousel-dot" data-index="7"></div>
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-aside">
+          <div class="card">
+            <div class="kicker" style="margin:0">Snapshot</div>
+            <div style="font-size:16px;font-weight:600;margin-top:4px">Labs, Startups &amp; Industry</div>
+            <div class="sub" style="margin:6px 0 0">
+              From car assembly training with Kia and Georgia Tech, to SecureMR hackathon projects with ByteDance,
+              to XR research at Northeastern, and VR-based surgical robotics work at Vicarious Surgical.
             </div>
-        </section>
-
-        <!-- Hero / Mission -->
-        <section class="hero" aria-label="Intro">
-            <div class="hero-main">
-                <div class="hero-kicker">Hello, I’m Erin</div>
-                <div class="hero-name">I push the boundaries of learning and training in XR.</div>
-                <div class="mission-box" id="mission">
-                    <div class="mission-label">Mission</div>
-                    <p class="mission-text">
-                        My mission is to muse emerging technologies to create gamified experiences that feel engaging and fluid.
-                        I design and build XR experiences that turn complex systems into playful, learnable
-                        worlds; whether that’s car assembly training, medical simulations, or creative tools
-                        for students.
-                    </p>
-                </div>
-
-                <div class="hero-meta">
-                    <div class="hero-meta-item">
-                        <i class="fa-solid fa-headset"></i>
-                        <span>XR Developer – Unity &amp; C#</span>
-                    </div>
-                    <div class="hero-meta-item">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                        <span>New Technologies Teacher – Fusion Academy</span>
-                    </div>
-                    <div class="hero-meta-item">
-                        <i class="fa-solid fa-medal"></i>
-                        <span>Best Use of Apple Vision Pro – MIT Reality Hack</span>
-                    </div>
-                </div>
+          </div>
+          <div class="card">
+            <div class="kicker" style="margin:0">What I love</div>
+            <div class="sub" style="margin:6px 0 0">
+              • Turning training into immersive games<br/>
+              • Building tools for learners and creators<br/>
+              • Rapid prototyping on new headsets<br/>
+              • Collaborating across design, research, and engineering
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="hero-aside">
-                <div class="stat-card">
-                    <div class="stat-label">Snapshot</div>
-                    <div class="stat-value">XR Across Labs, Startups &amp; Industry</div>
-                    <div class="stat-desc">
-                        From car assembly training with Kia and Georgia Tech, to a SecureMR hackathon project with
-                        ByteDance, to XR research at Northeastern, to VR based robot control at Vicarious Surgical.
-                    </div>
-                    <div class="pill-row">
-                        <div class="pill"><i class="fa-solid fa-vr-cardboard"></i>Quest, Vive, Vision Pro</div>
-                        <div class="pill"><i class="fa-solid fa-code"></i>Unity &amp; C#</div>
-                        <div class="pill"><i class="fa-solid fa-users"></i>Student-first Teaching</div>
-                    </div>
+    <section id="contact" aria-label="Contact">
+      <div class="section-header"></div>
+      <p class="section-sub">Reach out for collaborations, research, teaching, or XR product work.</p>
+
+      <div class="card">
+        <div class="contact-grid">
+          <div>
+            <form action="#" method="post">
+              <div class="row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="Name" type="text" placeholder="Your name" required />
                 </div>
-
-                <div class="stat-card">
-                    <div class="stat-label">What I Love</div>
-                    <div class="stat-desc">
-                        • Modernizing the medical field with XR research and simulators<br />
-                        • Turning training into immersive games<br />
-                        • Giving students the tools to build their own worlds<br />
-                        • Prototyping with new headsets and interaction models<br />
-                        • Collaborating across design, research, and engineering
-                    </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="Email" type="email" placeholder="you@example.com" required />
                 </div>
+              </div>
+              <div class="field">
+                <label for="topic">Topic</label>
+                <input id="topic" name="Topic" type="text" placeholder="XR project, role, teaching, etc." />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" placeholder="Tell me a bit about what you’re building…" required></textarea>
+              </div>
+              <button class="btn primary" type="submit"><i class="fa-regular fa-paper-plane"></i> Send message</button>
+              <div class="note" style="margin-top:10px;">
+                (This form is currently a front-end placeholder. If you want, I can wire it to Formspree/Web3Forms so it actually sends.)
+              </div>
+            </form>
+          </div>
+          <div>
+            <div class="note">
+              Prefer a cleaner look? This site intentionally hides direct contact details.
+              You can connect the form to an email service without exposing your address in HTML.
             </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" aria-label="Contact">
-            <div class="section-header">
-                <span>Contact Me</span>
+            <div style="height:1px;margin:18px 0;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55"></div>
+            <div class="note">
+              Open to: XR engineering, interaction design, immersive training, education tools, and research collaborations.
             </div>
-            <p class="section-subtitle">
-                Interested in collaborating on an XR project, research, or a learning experience?
-                Share a bit about it below.
-            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="card">
-                <div class="contact-grid">
-                    <div>
-                        <!-- No direct email or phone; you can wire this form to a backend later -->
-                        <form action="#" method="post">
-                            <div class="row">
-                                <div class="field">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="Name" placeholder="Your name" required />
-                                </div>
-                                <div class="field">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="Email" placeholder="you@example.com" required />
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="topic">What would you like to talk about?</label>
-                                <input type="text"
-                                       id="topic"
-                                       name="Topic"
-                                       placeholder="XR project, teaching, hackathon, etc." />
-                            </div>
-                            <div class="field">
-                                <label for="message">Message</label>
-                                <textarea id="message"
-                                          name="Message"
-                                          placeholder="Share a bit about your idea, project, or opportunity..."
-                                          required></textarea>
-                            </div>
-                            <button class="btn-primary" type="submit">
-                                <i class="fa-regular fa-paper-plane"></i>
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
+    <footer>© <span id="year"></span> Erin Mittmann</footer>
+  </div>
 
-                    <div>
-                        <div class="contact-meta-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>Based in SF. Open to remote and in person XR roles.</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="contact-meta-item">
-                            <i class="fa-solid fa-heart"></i>
-                            <span>
-                                Outside of work: 3,000+ hours of volunteering, trapeze, lifting, biking,
-                                swimming, robotics, and board games.
-                            </span>
-                        </div>
-                        <div class="contact-meta-item">
-                            <i class="fa-solid fa-puzzle-piece"></i>
-                            <span>
-                                I especially enjoy projects that focus on education, health, or immersive tech.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <script>
+    (function () {
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".dot");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      let current = 0;
 
-        <footer>
-            Built with ✦ HTML, CSS, and a little JavaScript &middot; ©
-            <span id="year"></span> Erin Mittmann
-        </footer>
-    </div>
+      function show(i){
+        slides.forEach((s,idx)=>s.classList.toggle("active", idx===i));
+        dots.forEach((d,idx)=>d.classList.toggle("active", idx===i));
+        current = i;
+      }
+      function next(){ show((current+1)%slides.length); }
+      function prev(){ show((current-1+slides.length)%slides.length); }
 
-    <script>
-        // Carousel logic
-        (function () {
-            const slides = document.querySelectorAll(".carousel-slide");
-            const dots = document.querySelectorAll(".carousel-dot");
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
+      nextBtn.addEventListener("click", next);
+      prevBtn.addEventListener("click", prev);
+      dots.forEach(d=>{
+        d.addEventListener("click", ()=>show(parseInt(d.dataset.index,10)));
+      });
 
-            let current = 0;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle("active", i === index);
-                });
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle("active", i === index);
-                });
-                current = index;
-            }
-
-            function nextSlide() {
-                const next = (current + 1) % slides.length;
-                showSlide(next);
-            }
-
-            function prevSlide() {
-                const prev = (current - 1 + slides.length) % slides.length;
-                showSlide(prev);
-            }
-
-            nextBtn.addEventListener("click", nextSlide);
-            prevBtn.addEventListener("click", prevSlide);
-
-            dots.forEach(dot => {
-                dot.addEventListener("click", () => {
-                    const index = parseInt(dot.getAttribute("data-index"), 10);
-                    showSlide(index);
-                });
-            });
-
-            // Optional: auto-advance every 10 seconds
-            setInterval(nextSlide, 10000);
-        })();
-
-        // Year in footer
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+      setInterval(next, 12000);
+    })();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

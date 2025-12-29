@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Erin Mittmann | Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root{
+      --bg:#050814; --card:#11172a; --accent:#ff6f61; --accent-soft:rgba(255,111,97,.16);
+      --text:#f7f7ff; --muted:#a4a8c3; --border:#1d2340;
+      --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --r-lg:18px; --r-sm:999px; --shadow:0 18px 40px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);background:radial-gradient(circle at top,#1b2345 0,#050814 55%);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .page{max-width:1080px;margin:0 auto;padding:20px 20px 64px}
+    header{position:sticky;top:0;z-index:200;background:rgba(5,8,20,.88);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border); padding:10px 0 12px; margin:0 0 18px}
+    .header-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-logo{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);
+      box-shadow:0 0 24px rgba(255,111,97,.7);background:#000}
+    .brand-logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand-text h1{font-size:18px;letter-spacing:.12em;text-transform:uppercase}
+    .brand-text span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em}
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+    nav a:hover{color:var(--accent);text-decoration:none}
+    @media (max-width:780px){.header-inner{flex-direction:column;align-items:flex-start}}
+
+    .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:6px 0 14px}
+    .title{font-size:clamp(24px,4vw,30px);font-weight:700}
+    .subtitle{font-size:13px;color:var(--muted);max-width:64ch}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:11px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(5,8,25,.9);color:var(--muted);cursor:pointer;user-select:none}
+    .chip.active{background:var(--accent-soft);color:var(--text);border-color:rgba(255,111,97,.45)}
+
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--r-lg);border:1px solid var(--border);padding:16px;box-shadow:var(--shadow)}
+    .card-head{display:flex;gap:12px;align-items:stretch}
+    .thumb{flex:0 0 160px;height:110px;border-radius:14px;border:1px solid var(--border);overflow:hidden;
+      background:linear-gradient(135deg,#2a2e4f,#11172a);display:flex;align-items:center;justify-content:center;position:relative}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb .ph i{font-size:28px;color:var(--accent)}
+    .tag{position:absolute;left:10px;bottom:10px;font-size:10px;padding:4px 8px;border-radius:999px;
+      background:rgba(5,8,20,.92);border:1px solid var(--border);color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+    .info{flex:1;min-width:0}
+    .h{font-size:15px;font-weight:650}
+    .meta{font-size:12px;color:var(--muted);margin-top:2px}
+    .desc{font-size:13px;color:#e2e4ff;margin-top:10px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .t{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(5,8,25,.9);color:var(--muted)}
+    .jump{margin-top:12px;font-size:12px;display:inline-flex;align-items:center;gap:6px}
+    .anchor{scroll-margin-top:90px}
+    footer{margin-top:34px;text-align:center;font-size:11px;color:var(--muted);opacity:.7}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="erin-headshot.jpg" alt="Portrait of Erin Mittmann" />
+          </div>
+          <div class="brand-text">
+            <h1>Erin Mittmann</h1>
+            <span>Projects</span>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#top">Top</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="top" id="top">
+      <div>
+        <div class="title">Projects</div>
+        <div class="subtitle">Full project write-ups (from your original carousel). Use the chips to filter quickly.</div>
+      </div>
+      <div class="filters" aria-label="Filter projects">
+        <div class="chip active" data-filter="all">All</div>
+        <div class="chip" data-filter="training">Training</div>
+        <div class="chip" data-filter="health">Health</div>
+        <div class="chip" data-filter="education">Education</div>
+        <div class="chip" data-filter="ar">AR</div>
+        <div class="chip" data-filter="research">Research</div>
+        <div class="chip" data-filter="surgical">Surgical</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card anchor" id="kia" data-tags="training">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-industry"></i></div>
+            <div class="tag"><i class="fa-solid fa-car"></i> Quest 3</div>
+          </div>
+          <div class="info">
+            <div class="h">Kia Assembly Line Training (Quest 3)</div>
+            <div class="meta">Georgia Tech MATRIX Research &bull; VR Developer</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          A VR training experience that mimics real Kia car assembly processes on Meta Quest 3.
+          I designed interactive UI, implemented hand-tracking and controller switching, and built a live
+          data backend to track completion time and mistakes for every run.
+        </div>
+        <div class="tags">
+          <span class="t">Quest 3</span><span class="t">Unity</span><span class="t">Training Simulation</span><span class="t">Data Logging</span><span class="t">UX for Manufacturing</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="street-smarts" data-tags="training">
+        <div class="card-head">
+          <div class="thumb">
+            <img src="street-smarts-vr.png" alt="Street Smarts VR scenario"/>
+            <div class="tag"><i class="fa-solid fa-shield"></i> Multiuser</div>
+          </div>
+          <div class="info">
+            <div class="h">Scenario-based VR Training</div>
+            <div class="meta">Street Smarts VR &bull; Software Engineer</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          Built and customized immersive training scenarios for organizations using Unity and HTC Vive Pro 2
+          with custom controllers and Photon multiuser networking. Designed branching interactions,
+          performance feedback, and hand-tracked quiz flows.
+        </div>
+        <div class="tags">
+          <span class="t">HTC Vive Pro 2</span><span class="t">Photon</span><span class="t">Training Design</span><span class="t">Hand Tracking</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="glucose-mr" data-tags="health">
+        <div class="card-head">
+          <div class="thumb">
+            <img src="glucose-mr.gif" alt="Glucose MR interface"/>
+            <div class="tag"><i class="fa-solid fa-heart-pulse"></i> SecureMR</div>
+          </div>
+          <div class="info">
+            <div class="h">Glucose MR – Health-aware Food Guidance</div>
+            <div class="meta">Hackathon Project &bull; Best Use of SecureMR</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          A mixed reality utility concept for people with diabetes. Using SecureMR camera privacy and 3D
+          object recognition, the app identifies foods around the user, cross-references them with
+          nutritional data, and provides visual guidance based on their current glucose levels.
+        </div>
+        <div class="tags">
+          <span class="t">Mixed Reality</span><span class="t">SecureMR</span><span class="t">Computer Vision</span><span class="t">Health Tech</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="commencement-ar" data-tags="ar education">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="tag"><i class="fa-solid fa-users"></i> Mobile AR</div>
+          </div>
+          <div class="info">
+            <div class="h">Commencement AR Experience</div>
+            <div class="meta">Northeastern CAMD New Technologies Lab</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          A mobile AR experience designed for 5,000 graduates. Helped lead development of interactive
+          visuals that layered digital celebration moments over the physical ceremony, accessible on
+          Apple and Android devices.
+        </div>
+        <div class="tags">
+          <span class="t">Mobile AR</span><span class="t">Unity</span><span class="t">Large-scale Deployment</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="xr-education" data-tags="education">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-person-chalkboard"></i></div>
+            <div class="tag"><i class="fa-solid fa-school"></i> Teaching</div>
+          </div>
+          <div class="info">
+            <div class="h">XR Creation Without Code</div>
+            <div class="meta">Northeastern CAMD Lab &amp; Fusion Academy</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          Developed Unity tools and curricula that let students build interactive VR videos and XR
+          experiences without needing to code. Taught Unity, C#, Python, robotics, CAD, and animation,
+          guiding learners from first prototype to polished projects.
+        </div>
+        <div class="tags">
+          <span class="t">Education</span><span class="t">Unity Tools</span><span class="t">VR Video</span><span class="t">Curriculum Design</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="disttmr" data-tags="ar training research">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-helmet-safety"></i></div>
+            <div class="tag"><i class="fa-solid fa-screwdriver-wrench"></i> HoloLens</div>
+          </div>
+          <div class="info">
+            <div class="h">Industrial AR Tutorials for Cold Spray</div>
+            <div class="meta">DISTTMR Research &bull; AR Developer</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          Collaborated with NAVY partners to create HoloLens AR tutorials that guide users through
+          Cold Spray repair workflows. Designed multimodal UI to surface video, 3D models, and
+          step-by-step instructions in context.
+        </div>
+        <div class="tags">
+          <span class="t">HoloLens</span><span class="t">Industrial AR</span><span class="t">UI for Procedures</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="vicarious" data-tags="surgical research">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-microscope"></i></div>
+            <div class="tag"><i class="fa-solid fa-stethoscope"></i> VR</div>
+          </div>
+          <div class="info">
+            <div class="h">High-Precision Surgical VR</div>
+            <div class="meta">Vicarious Surgical &bull; VR Developer Intern</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          Prototyped VR features for high-precision surgical experiences. Created custom shaders for
+          camera feeds in VR and worked on testing and debugging to reduce latency between cameras and
+          headsets for a more responsive experience.
+        </div>
+        <div class="tags">
+          <span class="t">Medical VR</span><span class="t">Custom Shaders</span><span class="t">Low-latency Pipelines</span>
+        </div>
+      </article>
+
+      <article class="card anchor" id="navigate" data-tags="research">
+        <div class="card-head">
+          <div class="thumb">
+            <div class="ph"><i class="fa-solid fa-person-running"></i></div>
+            <div class="tag"><i class="fa-solid fa-brain"></i> HTC</div>
+          </div>
+          <div class="info">
+            <div class="h">Navigate Project – VR Island</div>
+            <div class="meta">CBH Lab Navigate Project &bull; VR Developer</div>
+            <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
+          </div>
+        </div>
+        <div class="desc">
+          Built a VR island environment using HTC hardware and a walking pod to study how exercise impacts
+          cognition. Designed custom terrain, optimized performance, and trained new hires on building
+          complex research-ready VR systems.
+        </div>
+        <div class="tags">
+          <span class="t">HTC VR</span><span class="t">Research</span><span class="t">Locomotion</span>
+        </div>
+      </article>
+    </div>
+
+    <footer>© <span id="year"></span> Erin Mittmann</footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".card.anchor");
+    function setActive(ch){
+      chips.forEach(c=>c.classList.toggle("active", c===ch));
+      const filter = ch.dataset.filter;
+      cards.forEach(card=>{
+        if(filter==="all"){ card.style.display="block"; return; }
+        const tags = (card.dataset.tags || "").split(/\s+/);
+        card.style.display = tags.includes(filter) ? "block" : "none";
+      });
+    }
+    chips.forEach(ch=>ch.addEventListener("click", ()=>setActive(ch)));
+  </script>
+</body>
+</html>
