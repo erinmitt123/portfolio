@@ -37,10 +37,22 @@
       .header-inner{flex-direction:column;align-items:flex-start}
     }
     
+    .thumb {
+  height: 400px;
+}
+.c-img {
+  height: 400px;
+}
     .c-img img,
 .thumb img {
   height: 400 px;
   object-fit: cover;
+}
+@media (max-width: 768px) {
+  .c-img,
+  .thumb {
+    height: 260px;
+  }
 }
 
 
