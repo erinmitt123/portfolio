@@ -44,7 +44,11 @@
       background:rgba(5,8,25,.9);color:var(--muted);cursor:pointer;user-select:none}
     .chip.active{background:var(--accent-soft);color:var(--text);border-color:rgba(255,111,97,.45)}
 
-   
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* always one column */
+  gap: 14px;
+}
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
     .card{background:var(--card);border-radius:var(--r-lg);border:1px solid var(--border);padding:16px;box-shadow:var(--shadow)}
     .card-head{display:flex;gap:12px;align-items:stretch}
