@@ -375,11 +375,7 @@
       <div class="card">
         <div class="contact-grid">
           <div>
-            <form
-  action="mailto:erin.mittma@gmail.com"
-  method="post"
-  enctype="text/plain"
->
+           <form id="contactForm">
   <div class="row">
     <div class="field">
       <label for="name">Name</label>
@@ -395,7 +391,7 @@
       <label for="email">Email</label>
       <input
         id="email"
-        name="Email"
+        nbboame="Email"
         type="email"
         placeholder="you@example.com"
         required
@@ -423,10 +419,10 @@
     ></textarea>
   </div>
 
-  <button class="btn primary" type="submit">
-    <i class="fa-regular fa-paper-plane"></i>
-    Send Message
-  </button>
+ <button class="btn primary" type="submit">
+  <i class="fa-regular fa-paper-plane"></i> Email Erin
+</button>
+
 </form>
 
           </div>
@@ -481,5 +477,24 @@
     })();
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script>
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name")?.value?.trim() || "";
+    const email = document.getElementById("email")?.value?.trim() || "";
+    const topic = document.getElementById("topic")?.value?.trim() || "";
+    const message = document.getElementById("message")?.value?.trim() || "";
+
+    const subject = encodeURIComponent(topic ? `Portfolio Contact: ${topic}` : "Portfolio Contact");
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}\n`
+    );
+
+    // This opens the user's mail app (or configured handler) with a draft
+    window.location.href = `mailto:erin.mittma@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
 </body>
 </html>
