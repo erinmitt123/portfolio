@@ -477,24 +477,37 @@
     })();
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-  <script>
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+ <script>
+  console.log("Contact script loaded");
 
-    const name = document.getElementById("name")?.value?.trim() || "";
-    const email = document.getElementById("email")?.value?.trim() || "";
-    const topic = document.getElementById("topic")?.value?.trim() || "";
-    const message = document.getElementById("message")?.value?.trim() || "";
+  window.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    console.log("form found?", !!form);
 
-    const subject = encodeURIComponent(topic ? `Portfolio Contact: ${topic}` : "Portfolio Contact");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}\n`
-    );
+    if (!form) return;
 
-    // This opens the user's mail app (or configured handler) with a draft
-    window.location.href = `mailto:erin.mittma@gmail.com?subject=${subject}&body=${body}`;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("submit intercepted");
+
+      const name = document.getElementById("name")?.value?.trim() || "";
+      const email = document.getElementById("email")?.value?.trim() || "";
+      const topic = document.getElementById("topic")?.value?.trim() || "";
+      const message = document.getElementById("message")?.value?.trim() || "";
+
+      const subject = encodeURIComponent(topic ? `Portfolio Contact: ${topic}` : "Portfolio Contact");
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}\n`
+      );
+
+      const mailto = `mailto:erin.mittma@gmail.com?subject=${subject}&body=${body}`;
+      console.log("mailto:", mailto);
+
+      window.location.href = mailto;
+    });
   });
 </script>
+
 
 </body>
 </html>
