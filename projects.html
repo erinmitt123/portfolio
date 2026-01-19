@@ -83,7 +83,8 @@
     .info{flex:1;min-width:0}
     .h{font-size:15px;font-weight:650}
     .meta{font-size:12px;color:var(--muted);margin-top:2px}
-    .desc{font-size:16px;color:#e2e4ff;margin-top:10px}
+    .desc, ul.desc{font-size:16px;color:#e2e4ff;margin-top:10px}
+    ul.desc{list-style:disc;padding-left:20px}
     .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
     .t{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);
       background:rgba(5,8,25,.9);color:var(--muted)}
@@ -147,11 +148,11 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Programmed a VR training experience that mimics real Kia car door assembly processes on the Meta Quest 3.
-          I designed interactive UI using HCI concepts, implemented features including a custom gyroscopic compass and ghost hands to train the users. I also built a live
-          data backend to track completion time and mistakes for every run to allow for measurable success heuristics.
-        </div>
+        <ul class="desc">
+          <li>Programmed a VR training experience that mimics real Kia car door assembly processes on the Meta Quest 3.</li>
+          <li>I designed interactive UI using HCI concepts, implemented features including a custom gyroscopic compass and ghost hands to train the users.</li>
+          <li>I also built a live data backend to track completion time and mistakes for every run to allow for measurable success heuristics.</li>
+        </ul>
         <div class="tags">
           <span class="t">Quest 3</span><span class="t">Unity</span><span class="t">Training Simulation</span><span class="t">Data Logging</span><span class="t">UX for Manufacturing</span>
         </div>
@@ -169,12 +170,13 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Built and customized multiuser immersive training scenarios for organizations using Unity, HTC Vive Pro 2 and HTC Vive Cosmos.
-          Programmed custom controllers and set up realistic interactions. Worked with Photon multiuser networking and worked to allow accurate replays of each scenario in a 6DOF space to rewatch after. 
-          Designed a sandbox scenario creation system for the user to put together scenarios. Developed branching interactions,
-          performance feedback, and a hand-tracked quiz flows.
-        </div>
+        <ul class="desc">
+          <li>Built and customized multiuser immersive training scenarios for organizations using Unity, HTC Vive Pro 2 and HTC Vive Cosmos.</li>
+          <li>Programmed custom controllers and set up realistic interactions.</li>
+          <li>Worked with Photon multiuser networking and worked to allow accurate replays of each scenario in a 6DOF space to rewatch after.</li>
+          <li>Designed a sandbox scenario creation system for the user to put together scenarios.</li>
+          <li>Developed branching interactions, performance feedback, and a hand-tracked quiz flows.</li>
+        </ul>
         <div class="tags">
           <span class="t">HTC Vive Pro 2</span><span class="t">Photon</span><span class="t">Training Design</span><span class="t">Hand Tracking</span>
         </div>
@@ -192,12 +194,11 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          A mixed reality project to help people manage diabetes. Using SecureMR camera privacy (allowing no one, including the developer to access the user's data) and 3D
-          object recognition, the app identifies foods around the user, cross-references them with
-          nutritional data, and provides visual guidance based on their current glucose levels. Over the course of 36 hours,I developed the entire front end with Diabetes type selection, and custom UI corresponding to what feedback the user needed including macros,
-          a grade and understanding of if the user sahould consume it, color coding and visuals to further indicate, and an algorithm to access the food based on their glucose levels.
-        </div>
+        <ul class="desc">
+          <li>A mixed reality project to help people manage diabetes.</li>
+          <li>Using SecureMR camera privacy (allowing no one, including the developer to access the user's data) and 3D object recognition, the app identifies foods around the user, cross-references them with nutritional data, and provides visual guidance based on their current glucose levels.</li>
+          <li>Over the course of 36 hours,I developed the entire front end with Diabetes type selection, and custom UI corresponding to what feedback the user needed including macros, a grade and understanding of if the user sahould consume it, color coding and visuals to further indicate, and an algorithm to access the food based on their glucose levels.</li>
+        </ul>
         <div class="tags">
           <span class="t">Mixed Reality</span><span class="t">SecureMR</span><span class="t">Computer Vision</span><span class="t">Pico 3</span>
         </div>
@@ -216,11 +217,10 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Developed a mobile AR experience designed for 5,000 graduates. Led a team of 20 people through development of interactive
-          visuals that layered digital celebration moments over the physical ceremony using object recognition and tracking and location detection, and made compatible with all
-          Apple and Android devices.
-        </div>
+        <ul class="desc">
+          <li>Developed a mobile AR experience designed for 5,000 graduates.</li>
+          <li>Led a team of 20 people through development of interactive visuals that layered digital celebration moments over the physical ceremony using object recognition and tracking and location detection, and made compatible with all Apple and Android devices.</li>
+        </ul>
         <div class="tags">
           <span class="t">Mobile AR</span><span class="t">Unity</span><span class="t">Large-scale Deployment</span>
         </div>
@@ -239,10 +239,10 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Created an augmented reality experience using the hololens where the user fought monsters and found health kits in certain image recognition detected locations across campus.
-          Designed various levels and linked animations to a variety of interactions to gamify learning about campus resources.
-        </div>
+        <ul class="desc">
+          <li>Created an augmented reality experience using the hololens where the user fought monsters and found health kits in certain image recognition detected locations across campus.</li>
+          <li>Designed various levels and linked animations to a variety of interactions to gamify learning about campus resources.</li>
+        </ul>
         <div class="tags">
           <span class="t">Education</span><span class="t">Gaminification</span><span class="t">Hololens AR</span><span class="t">Object recognition</span>
         </div>
@@ -261,11 +261,10 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Collaborated with Navy partners to create HoloLens AR tutorials that guide users through
-          Cold Spray machine repair workflows. Designed multimodal UI to display video, 3D models, and
-          step-by-step instructions on detected objects.
-        </div>
+        <ul class="desc">
+          <li>Collaborated with Navy partners to create HoloLens AR tutorials that guide users through Cold Spray machine repair workflows.</li>
+          <li>Designed multimodal UI to display video, 3D models, and step-by-step instructions on detected objects.</li>
+        </ul>
         <div class="tags">
           <span class="t">HoloLens</span><span class="t">Industrial AR</span><span class="t">HCI Implementation</span>
         </div>
@@ -284,11 +283,10 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Prototyped VR features to control a high-precision surgical experience. Created custom shaders for
-          camera feeds in VR and worked on testing and debugging to reduce latency between cameras and
-          headsets for a more responsive experience.
-        </div>
+        <ul class="desc">
+          <li>Prototyped VR features to control a high-precision surgical experience.</li>
+          <li>Created custom shaders for camera feeds in VR and worked on testing and debugging to reduce latency between cameras and headsets for a more responsive experience.</li>
+        </ul>
         <div class="tags">
           <span class="t">Medical VR</span><span class="t">Custom Shaders</span><span class="t">Low-latency Pipelines</span>
         </div>
@@ -307,11 +305,10 @@
             <a class="jump" href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to featured carousel</a>
           </div>
         </div>
-        <div class="desc">
-          Built a VR island environment using HTC hardware and a walking pod to study how exercise impacts
-          cognition. Designed custom terrain, optimized performance, and trained four new hires on building
-          complex research-ready VR systems.
-        </div>
+        <ul class="desc">
+          <li>Built a VR island environment using HTC hardware and a walking pod to study how exercise impacts cognition.</li>
+          <li>Designed custom terrain, optimized performance, and trained four new hires on building complex research-ready VR systems.</li>
+        </ul>
         <div class="tags">
           <span class="t">HTC VR</span><span class="t">Research</span><span class="t">Locomotion</span>
         </div>
