@@ -12,29 +12,33 @@
   />
   <style>
     :root{
-      --bg:#1e212a; --surface:#1e212a; --surface-2:#22262f; --card:#1e212a;
-      --sh-dark:#131418; --sh-light:#2a2f3c;
-      --accent:#5ef2d6; --accent-2:#9db4ff; --accent-soft:rgba(94,242,214,.14);
-      --text:#e4e8f3; --muted:#8b91a7; --border:rgba(150,170,220,.06);
+      --bg:#0b0b0e; --deep:#0b0b0e; --charcoal:#14161a; --slate:#1f2126;
+      --surface:linear-gradient(145deg,#1c1f26 0%,#141519 52%,#0d0e12 100%);
+      --surface-2:#1f2126; --card:var(--surface); --sunken:#0c0d10;
+      --sh-dark:#040405; --sh-light:#23262f;
+      --accent:#00f0ff; --accent-2:#7b61ff; --accent-3:#ff9ed1; --accent-lav:#c4b5ff;
+      --accent-soft:rgba(0,240,255,.14);
+      --text:#eef0f6; --muted:#8a8f9c; --border:rgba(180,190,220,.05);
+      --sheen:linear-gradient(90deg,#00f0ff,#c4b5ff,#ff9ed1);
       --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       --r-lg:22px; --r-sm:999px;
-      --raised:9px 9px 20px var(--sh-dark), -9px -9px 20px var(--sh-light);
-      --raised-sm:5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);
-      --inset:inset 5px 5px 11px var(--sh-dark), inset -5px -5px 11px var(--sh-light);
-      --glow:0 0 22px rgba(94,242,214,.5);
-      --glow-2:0 0 22px rgba(157,180,255,.5);
+      --raised:9px 9px 22px var(--sh-dark), -8px -8px 20px var(--sh-light);
+      --raised-sm:5px 5px 13px var(--sh-dark), -4px -4px 11px var(--sh-light);
+      --inset:inset 5px 5px 12px var(--sh-dark), inset -4px -4px 10px var(--sh-light);
+      --glow:0 0 24px rgba(0,240,255,.5);
+      --glow-2:0 0 24px rgba(123,97,255,.55);
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--font);background:radial-gradient(circle at 50% -10%,#262a36 0,#1e212a 46%) fixed;color:var(--text);line-height:1.6}
-    a{color:var(--accent);text-decoration:none} a:hover{color:#8ff7e4;text-decoration:none}
+    body{font-family:var(--font);background:radial-gradient(circle at 50% -10%,#151519 0,#0b0b0e 42%) fixed;color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none} a:hover{color:#7ffcff;text-decoration:none}
     .page{max-width:1080px;margin:0 auto;padding:20px 20px 64px}
 
     header{
       position:sticky;top:0;z-index:200;
-      background:rgba(30,33,42,.82);
-      backdrop-filter:blur(14px);
+      background:rgba(11,11,14,.72);
+      backdrop-filter:blur(16px);
       border-bottom:1px solid var(--border);
-      box-shadow:0 10px 30px rgba(15,16,20,.55);
+      box-shadow:0 10px 34px rgba(0,0,0,.7);
       width:100vw;margin-left:calc(50% - 50vw);
     }
     .header-inner{
@@ -55,7 +59,7 @@
 
     .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:6px 0 14px}
     .title{font-size:clamp(24px,4vw,30px);font-weight:700;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+      background:var(--sheen);-webkit-background-clip:text;background-clip:text;color:transparent}
     .subtitle{font-size:13px;color:var(--muted);max-width:64ch}
 
     .filters{display:flex;gap:8px;flex-wrap:wrap}
@@ -84,7 +88,7 @@
     .desc, ul.desc{font-size:16px;color:#d3d8e8;margin-top:10px}
     ul.desc{list-style:none;padding-left:0}
     ul.desc li{font-size:14px;margin-bottom:6px;padding-left:20px;position:relative}
-    ul.desc li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:999px;background:var(--accent);box-shadow:0 0 8px rgba(94,242,214,.6)}
+    ul.desc li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:999px;background:var(--accent);box-shadow:0 0 8px rgba(0,240,255,.65)}
     .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
     .t{font-size:11px;padding:6px 12px;border-radius:999px;border:none;
       background:var(--surface);color:var(--muted);box-shadow:var(--raised-sm)}

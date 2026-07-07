@@ -12,29 +12,33 @@
   />
   <style>
     :root{
-      --bg:#1e212a; --surface:#1e212a; --surface-2:#22262f; --card:#1e212a;
-      --sh-dark:#131418; --sh-light:#2a2f3c;
-      --accent:#5ef2d6; --accent-2:#9db4ff; --accent-soft:rgba(94,242,214,.14);
-      --text:#e4e8f3; --muted:#8b91a7; --border:rgba(150,170,220,.06);
+      --bg:#0b0b0e; --deep:#0b0b0e; --charcoal:#14161a; --slate:#1f2126;
+      --surface:linear-gradient(145deg,#1c1f26 0%,#141519 52%,#0d0e12 100%);
+      --surface-2:#1f2126; --card:var(--surface); --sunken:#0c0d10;
+      --sh-dark:#040405; --sh-light:#23262f;
+      --accent:#00f0ff; --accent-2:#7b61ff; --accent-3:#ff9ed1; --accent-lav:#c4b5ff;
+      --accent-soft:rgba(0,240,255,.14);
+      --text:#eef0f6; --muted:#8a8f9c; --border:rgba(180,190,220,.05);
+      --sheen:linear-gradient(90deg,#00f0ff,#c4b5ff,#ff9ed1);
       --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       --r-lg:22px; --r-sm:999px;
-      --raised:9px 9px 20px var(--sh-dark), -9px -9px 20px var(--sh-light);
-      --raised-sm:5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);
-      --inset:inset 5px 5px 11px var(--sh-dark), inset -5px -5px 11px var(--sh-light);
-      --glow:0 0 22px rgba(94,242,214,.5);
-      --glow-2:0 0 22px rgba(157,180,255,.5);
+      --raised:9px 9px 22px var(--sh-dark), -8px -8px 20px var(--sh-light);
+      --raised-sm:5px 5px 13px var(--sh-dark), -4px -4px 11px var(--sh-light);
+      --inset:inset 5px 5px 12px var(--sh-dark), inset -4px -4px 10px var(--sh-light);
+      --glow:0 0 24px rgba(0,240,255,.5);
+      --glow-2:0 0 24px rgba(123,97,255,.55);
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--font);background:radial-gradient(circle at 50% -10%,#262a36 0,#1e212a 46%) fixed;color:var(--text);line-height:1.6}
-    a{color:var(--accent);text-decoration:none} a:hover{color:#8ff7e4;text-decoration:none}
+    body{font-family:var(--font);background:radial-gradient(circle at 50% -10%,#151519 0,#0b0b0e 42%) fixed;color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none} a:hover{color:#7ffcff;text-decoration:none}
     .page{max-width:1080px;margin:0 auto;padding:20px 20px 64px}
 
     header{
       position:sticky;top:0;z-index:200;
-      background:rgba(30,33,42,.82);
-      backdrop-filter:blur(14px);
+      background:rgba(11,11,14,.72);
+      backdrop-filter:blur(16px);
       border-bottom:1px solid var(--border);
-      box-shadow:0 10px 30px rgba(15,16,20,.55);
+      box-shadow:0 10px 34px rgba(0,0,0,.7);
       width:100vw;margin-left:calc(50% - 50vw);
     }
     .header-inner{
@@ -80,7 +84,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   margin-bottom: 8px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: var(--sheen);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -93,7 +97,7 @@
     .card{background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);padding:20px;box-shadow:var(--raised)}
     .btn{border-radius:999px;font-size:13px;padding:11px 18px;border:none;background:var(--surface);color:var(--text);
       display:inline-flex;align-items:center;gap:8px;cursor:pointer;box-shadow:var(--raised-sm);transition:box-shadow .2s,color .2s,filter .2s}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),#3fd8bf);color:#0c1512;font-weight:700;box-shadow:var(--raised-sm),var(--glow)}
+    .btn.primary{background:linear-gradient(135deg,#00f0ff 0%,#8fd4ff 45%,#c4b5ff 100%);color:#0b0b0e;font-weight:700;box-shadow:var(--raised-sm),var(--glow)}
     .btn.primary:hover{box-shadow:var(--raised-sm),var(--glow);filter:brightness(1.08)}
     .btn.ghost{color:var(--muted)}
     .btn:hover{text-decoration:none;box-shadow:var(--inset)}
@@ -142,7 +146,7 @@
     .contact-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
     @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
     label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:6px}
-    input,textarea{width:100%;background:var(--surface);border-radius:12px;border:none;
+    input,textarea{width:100%;background:var(--sunken);border-radius:12px;border:none;
       padding:12px 14px;color:var(--text);font-family:var(--font);font-size:13px;outline:none;box-shadow:var(--inset)}
     input:focus,textarea:focus{box-shadow:var(--inset),0 0 0 1px rgba(94,242,214,.5)}
     input::placeholder,textarea::placeholder{color:#5f6478}
